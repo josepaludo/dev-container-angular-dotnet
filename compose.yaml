@@ -22,8 +22,8 @@ services:
         ports:
             - "8080:8080"
             - "3000:3000"
-        # stdin_open: true
-        # tty: true
+        stdin_open: true
+        tty: true
         depends_on:
             - pg
         volumes:
