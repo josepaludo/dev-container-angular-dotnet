@@ -46,7 +46,7 @@ Simple compose file to configure ports, volumes and environment variables of the
 
 The conditional checks if */app* dir is empty (that is, it's the first time the container runs, so no volume was loaded), then it loads the backup from the */backup* dir into the */app* dir. Other thing that must be done on the first time is to replace the default launchSettings.json from the .NET Core Api, so it doesn't try to open a browser and uses the port 8080.
 
-Then comes my personal favorite part of the project. The script runs basic tmux commands to split the terminal into 3 and start the development servers (one window is left open and empty, just in case). The configuration for the angular server is supplied on the script, which is much easier than having to replace files (I'm looking at you, launchSettings.json). Perhaps the angular server will prompt for some questions, but only on the first time. To those unfamiliar with tmux, pressing Ctrl+B, then Q and then 1 should move the cursor to the angular pane so you can answer the prompts from there.
+Then comes my personal favorite part of the project. The script runs basic tmux commands to split the terminal into 3 and start the development servers (one window is left open and empty, just in case). The configuration for the angular server is supplied on the script, which is much easier than having to replace files (I'm looking at you, launchSettings.json).
 
 The script then attaches to the session created and you are left with 3 panes open, two of them running scripts. This is particularly useful in two occasions. In case you want to install more dependencies and in case you want to restart a server. ```Dotnet watch run``` sometimes requires manual restarts, for example.
 
