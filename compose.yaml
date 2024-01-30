@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+    pg:
+        image: postgres
+        container_name: dbpg
+        environment:
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=db
+        volumes:
+            - $PWD/volume/pg:/var/lib/postgresql/data
+        networks:
+            - angular-dotnet-network
+
+    dev:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: dev
+        ports:
+            - "8080:8080"
+            - "3000:3000"
+        # stdin_open: true
+        # tty: true
+        depends_on:
+            - pg
+        volumes:
+            - $PWD/volume/app:/app
+        networks:
+            - angular-dotnet-network
+
+networks:
+
+    angular-dotnet-network:
+        driver: bridge
