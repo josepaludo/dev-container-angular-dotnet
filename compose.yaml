@@ -26,6 +26,7 @@ services:
         tty: true
         environment:
             - NG_CLI_ANALYTICS=false
+            - DATABASE_URL=postgres://user:password@pg/db
         depends_on:
             - pg
         volumes:
