@@ -1,0 +1,12 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Open Dev Container",
+            "command": "${command:remote-containers.attachToRunningContainer}",
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
