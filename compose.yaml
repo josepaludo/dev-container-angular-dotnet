@@ -2,9 +2,8 @@ version: '3.8'
 
 services:
 
-    pg:
+    pg1:
         image: postgres
-        container_name: dbpg
         environment:
             - POSTGRES_USER=user
             - POSTGRES_PASSWORD=password
@@ -14,7 +13,7 @@ services:
         networks:
             - angular-dotnet-network
 
-    dev:
+    dev1:
         build:
             context: .
             dockerfile: Dockerfile
@@ -26,9 +25,9 @@ services:
         tty: true
         environment:
             - NG_CLI_ANALYTICS=false
-            - DATABASE_URL=postgres://user:password@pg/db
+            - DATABASE_URL=postgres://user:password@pg1/db
         depends_on:
-            - pg
+            - pg1
         volumes:
             - $PWD/volume/app:/app
         networks:
